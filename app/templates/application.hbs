@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {{#link-to 'application' class="navbar-brand"}}Flint Bookstore{{/link-to}}
+    </div>
+    <div>
+      <ul class="nav navbar-nav navbar-right">
+        <li>{{#link-to 'about'}}About{{/link-to}}</li>
+        {{#if session.isAuthenticated}}
+          <li>{{#link-to 'books'}}Books{{/link-to}}</li>
+          <li>{{#link-to 'profile' session.uid}}Profile{{/link-to}}</li>
+          <li><div class="divider-vertical"></div></li>
+          <li><a {{action 'logout'}}>Logout</a></li>
+        {{else}}
+          <li><div class="divider-vertical"></div></li>
+          <li>{{#link-to 'login'}}Login{{/link-to}}</li>
+          <li><div class="divider-vertical"></div></li>
+          <li>{{#link-to 'signup'}}Signup{{/link-to}}</li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      {{outlet}}
+    </div>
+  </div>
+</main>
+
+{{app-footer}}
+
+{{log session.currentUser}}

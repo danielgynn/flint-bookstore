@@ -1,0 +1,22 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="page-header">
+    <h1 id="title" class="text-center">{{fa-icon "book"}} Books</h1>
+  </div>
+
+  <p class="text-center lead">List of books.</p>
+  <section>
+    <ul class="nav nav-pills">
+      <li>{{#link-to 'books.new'}}Add new book{{/link-to}}</li>
+      <li><a {{action "orderByRating"}}>Order by Rating</a></li>
+    </ul>
+
+    <div class="list-group">
+      {{#each model as |book|}}
+      <div class="list-group-item">
+        <span><strong>{{#link-to 'books.book' book}}{{book.title}}{{/link-to}}</strong> - <em>{{book.author}}</em> - {{book.publishYear}} - {{fa-icon "star"}} {{book.rating}}</span>
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+</div>

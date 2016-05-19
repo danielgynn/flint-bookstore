@@ -1,0 +1,57 @@
+<div class="col-md-6 col-md-offset-3 text-center">
+
+  {{#if isEditing}}
+  <div class="page-header">
+    <h1>Edit Profile</h1>
+  </div>
+    <form>
+      <div class="form-group col-md-6">
+        <label for="titleInput">First Name</label>
+        {{input value=model.firstName class="form-control" id="titleInput"}}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="authorIput">Last Name</label>
+        {{input value=model.lastName class="form-control" id="authorInput"}}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="yearInput">Location</label>
+        {{input value=model.location class="form-control" id="yearInput"}}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="website-input">Website</label>
+        {{input value=model.website class="form-control" id="website-input"}}
+      </div>
+      <div class="form-group col-md-12">
+        <label for="image-input">Profile Image</label>
+        {{input value=model.profileImage class="form-control" id="image-input"}}
+      </div>
+      <div class="form-group col-md-12">
+        <label for="bio-input">Bio</label>
+        {{textarea value=model.bio class="form-control" id="bio-input"}}
+      </div>
+    </form>
+  {{else}}
+    <div class="page-header">
+      <h1>
+        {{model.firstName}} {{model.lastName}}
+        {{#unless isEditing}}
+          <a {{action "editProfile"}}> {{fa-icon "pencil"}}</a>
+        {{/unless}}
+      </h1>
+    </div>
+    <p class="lead">{{model.bio}}</p>
+    <div class="col-md-12">
+      {{#if model.profileImage}}
+        <img src="{{model.profileImage}}" class="center-block profile-img img-responsive" width="140" height="140">
+      {{else}}
+        <img src="{{session.currentUser.profileImageURL}}" class="center-block profile-img img-responsive" width="140" height="140">
+      {{/if}}
+      <p>{{fa-icon "envelope"}} {{session.currentUser.email}}</p>
+      <p>{{fa-icon "map-marker"}} {{model.location}}</p>
+      <p>{{fa-icon "link"}} <a href="{{model.website}}" target="_blank">{{model.website}}</a></p>
+    </div>
+  {{/if}}
+
+  {{#if isEditing}}<button {{action "saveProfile"}} class="btn btn-success">{{fa-icon "save"}} Save</button>{{/if}}
+
+</div>

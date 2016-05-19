@@ -1,0 +1,41 @@
+<div class="col-md-8 col-md-offset-2">
+<section>
+  <div class="page-header">
+    <h1 class="text-center">Add New Book</h1>
+  </div>
+
+  {{#link-to 'books'}}Or go back{{/link-to}}
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form>
+        <div class="form-group">
+          <label for="titleInput">Title</label>
+          {{input value=title placeholder="Title" class="form-control" id="titleInput"}}
+        </div>
+        <div class="form-group">
+          <label for="authorInput">Author</label>
+          {{input value=author placeholder="Author" class="form-control" id="authorInput"}}
+        </div>
+        <div class="form-group">
+          <label for="yearInput">Publish Year</label>
+          {{input value=publishYear placeholder="Publish Year" class="form-control" id="yearInput"}}
+        </div>
+        <div class="form-group">
+          <label for="imageInput">Cover Image</label>
+          {{input value=coverImage placeholder="Cover Image" class="form-control" id="imageInput"}}
+        </div>
+        <div class="form-group">
+          <label for="blurbInput">Blurb</label>
+          {{textarea value=blurb placeholder="Blurb" class="form-control" id="blurbInput"}}
+        </div>
+        <div class="form-group">
+          <label for="rating">Rating</label>
+          {{input value=rating placeholder="Rating" class="form-control" id="rating"}}
+        </div>
+        <button {{action "publishBook"}} class="btn btn-default">Publish</button>
+      </form>
+    </div>
+  </div>
+</section>
+</div>

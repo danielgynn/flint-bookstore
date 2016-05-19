@@ -1,0 +1,57 @@
+<section class="col-md-8 col-md-offset-2">
+
+  <header class="page-header">
+    <h1 class="text-center">
+      {{model.title}}
+      {{#link-to 'books' class="back-arrow"}}{{fa-icon "chevron-left"}}{{/link-to}}
+      {{#if isEditing}}
+        <a class="text-success" {{action "save"}}>{{fa-icon "save"}}</a>
+        <a class="trash-icon">{{#hold-button type="rectangle" action="deleteBook"}}
+          Hold to Delete
+        {{/hold-button}}</a>
+      {{else}}
+        <a {{action "edit"}}> {{fa-icon "pencil"}}</a>
+      {{/if}}
+    </h1>
+  </header>
+
+  {{#if isEditing}}
+    <form>
+      <div class="form-group">
+        <label for="titleInput">Title</label>
+        {{input value=model.title class="form-control" id="titleInput"}}
+      </div>
+      <div class="form-group">
+        <label for="authorIput">Author</label>
+        {{input value=model.author class="form-control" id="authorInput"}}
+      </div>
+      <div class="form-group">
+        <label for="yearInput">Publish year</label>
+        {{input value=model.publishYear class="form-control" id="yearInput"}}
+      </div>
+      <div class="form-group">
+        <label for="blurbInput">Blurb</label>
+        {{textarea value=model.blurb class="form-control" id="blurbInput"}}
+      </div>
+      <div class="form-group">
+        <label for="imageInput">Cover Image</label>
+        {{input value=model.coverImage class="form-control" id="imageInput"}}
+      </div>
+    </form>
+  {{else}}
+    <div class="row">
+      <div class="col-md-8">
+        <h3>Written by {{model.author}}</h3>
+        <h3><em>Published {{model.publishYear}}</em></h3>
+        {{star-rating item=model rating=model.rating on-click=(action "updateRating") maxRating=10}}
+        <p class="lead">{{markdown-to-html markdown=model.blurb}}</p>
+      </div>
+      <div class="col-md-4">
+        {{#if model.coverImage}}
+          <img class="cover-image center-block" src="{{model.coverImage}}" alt="{{model.title}} Cover">
+        {{/if}}
+      </div>
+    </div>
+  {{/if}}
+
+</section>

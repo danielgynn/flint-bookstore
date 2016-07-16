@@ -4,16 +4,24 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    sassOptions: {
+    assOptions: {
       inputFile: 'app.scss',
-      outputFile: 'app.css',
+      outputFile: 'flint-bookstore.css',
       includePaths: [
         'bower_components',
       ],
     },
+    outputPaths: {
+      app: {
+        css: {
+          app: '/assets/flint-bookstore.css'
+        },
+        js: '/assets/flint-bookstore.js'
+      }
+    },
     emberCliFontAwesome: {
      useScss: true,
-   },
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

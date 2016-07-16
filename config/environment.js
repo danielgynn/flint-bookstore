@@ -2,10 +2,16 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'bookstore',
+    modulePrefix: 'flint-bookstore',
     environment: environment,
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     firebase: 'https://flint-bookstore.firebaseio.com/',
+    firebase: {
+      apiKey: 'AIzaSyDUU4ZSEqR7Kyd4qZItpsiJ8MIOJ7qPKKA',
+      authDomain: 'flint-bookstore.firebaseapp.com',
+      databaseURL: 'https://flint-bookstore.firebaseio.com',
+      storageBucket: 'flint-bookstore.appspot.com',
+    },
     torii: {
       sessionServiceName: 'session',
     },

@@ -22,10 +22,6 @@
         {{input value=model.website class="form-control" id="website-input"}}
       </div>
       <div class="form-group col-md-12">
-        <label for="image-input">Profile Image</label>
-        {{input value=model.profileImage class="form-control" id="image-input"}}
-      </div>
-      <div class="form-group col-md-12">
         <label for="bio-input">Bio</label>
         {{textarea value=model.bio class="form-control" id="bio-input"}}
       </div>
@@ -41,11 +37,7 @@
     </div>
     <p class="lead">{{model.bio}}</p>
     <div class="col-md-12">
-      {{#if model.profileImage}}
-        <img src="{{model.profileImage}}" class="center-block profile-img img-responsive" width="140" height="140">
-      {{else}}
-        <img src="{{session.currentUser.profileImageURL}}" class="center-block profile-img img-responsive" width="140" height="140">
-      {{/if}}
+      {{gravatar-image email=session.currentUser.email class="center-block img-responsive" size=140}}
       <p>{{fa-icon "envelope"}} {{session.currentUser.email}}</p>
       <p>{{fa-icon "map-marker"}} {{model.location}}</p>
       <p>{{fa-icon "link"}} <a href="{{model.website}}" target="_blank">{{model.website}}</a></p>

@@ -13,14 +13,6 @@ export default Ember.Route.extend({
     return this.store.query('book', {
       orderBy: 'title',
     });
-  },
-
-  actions: {
-    orderByRating: function() {
-      return this.store.query('book', {
-        orderBy: 'rating',
-      });
-    },
-  },
+  }
 
 });

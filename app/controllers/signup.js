@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
         return user.save()
         .then(() => {
           this.transitionTo('protected');
-        })
+        });
       });
     }
   }

@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
         provider: 'password',
         email: email,
         password: password,
-      })
+      });
       this.transitionToRoute('protected');
     },
   },
